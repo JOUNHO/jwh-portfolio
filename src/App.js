@@ -1,26 +1,36 @@
 import * as React from 'react'
-import Home from './components/views/Home'
+import Home from './components/Home'
 import ReactFullpage from "@fullpage/react-fullpage";
-import AboutMe from './components/views/AboutMe';
-import AppHeader from '../src/components/AppHeader';
-import Project from './components/views/Project';
+import AboutMe from './components/AboutMe';
+import AppHeader from './components/Common/AppHeader';
+import Project from './components/Project';
 
-const anchors = ["firstPage", "secondPage", "thirdPage"];
+
 
 function App() {
+  const pages = ["HOME", "ABOUT_ME", "PROJECT", "CONTACT"];
+  let fullpageAPI;
+
+  /* Header Item 클릭 했을때*/
+  const moveOnPage = (index) => {
+    fullpageAPI.silentMoveTo(pages[index],index);
+  }
+
   return (
     <>
-      <AppHeader />
+      <AppHeader moveOnPage={moveOnPage}/>
       <ReactFullpage
-        anchors={anchors}
+        v2compatible={true}
+        anchors={pages}
+        scrollOverflow={true}
         navigation
-        navigationTooltips={anchors}
+        navigationPosition={"left"}
+        navigationTooltips={pages}
         onLeave={(origin, destination, direction) => {
-          console.log("onLeave event", { origin, destination, direction });
         }}
         render={({ state, fullpageApi }) => {
-          console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
-
+          console.log("render prop change", state, fullpageApi);
+          fullpageAPI=fullpageApi;
           return (
             <div>
               <Home />

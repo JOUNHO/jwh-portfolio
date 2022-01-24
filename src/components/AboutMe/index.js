@@ -1,4 +1,4 @@
-import SectionLayout from "../../Common/SectionLayout";
+import SectionLayout from "../Common/SectionLayout";
 
 const AboutMe = () => {
   return (

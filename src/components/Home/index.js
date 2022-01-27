@@ -3,12 +3,10 @@ import styled from "styled-components";
 import LeftContent from './LeftContent';
 import RightContent from './RightContent';
 
-const MyImg = styled.img`
 
-`
 const Home = (props) => {
   return(
-    <SectionLayout>
+    <SectionLayout backgroundImg="homeBackGround.jpg">
       <div className="container">
       <div className="content">
         <LeftContent/>

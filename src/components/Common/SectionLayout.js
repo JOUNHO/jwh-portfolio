@@ -1,8 +1,11 @@
 import styled from "styled-components"
 
 const Section = styled.div`
-  color : black;
+  color : white;
   background-color:${(props) => props.background || "white"};
+  background-image:url("${process.env.PUBLIC_URL}/img/${(props) => props.backgroundImg}");
+  background-position: center;
+  background-size: cover;  
   .container {
     width:100vw;
     display:inline-box;

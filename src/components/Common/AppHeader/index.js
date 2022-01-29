@@ -12,14 +12,19 @@ import HeaderDrawer from './HeaderDrawer';
 const StyledAppBar = styled(AppBar)`
   position:absolute;
   background-color:transparent;
-  color:black;
+  color:white;
   box-shadow:0 0;
   div {
     font-size: 1rem;
+    font-weight: bold;
     padding:0.8rem 1.8rem;
     @media ${(props)=>props.theme.mobile}{
       padding:0.5rem 0.5rem;
     }
+  }
+  .name{
+    flex-grow: 1;
+    padding:0.8rem 0.4rem;
   }
   .etc {
     font-size : 0.7rem;
@@ -43,23 +48,14 @@ function AppHeader(props) {
     <>
       <StyledAppBar>
         <Toolbar>
-          <Typography sx={{ flexGrow: 1 }}>
-            JWH
-          </Typography>
+          <div className="name">
+            UNHO JO
+          </div>
           <div className="etc">
             +82 10-7706-9177
           </div>
           <div className="etc">
             dnsgh9177@naver.com
-          </div>
-          <div className="etc">
-            blog
-          </div>
-          <div className="etc">
-            In.
-          </div>
-          <div className="etc">
-            Gh.
           </div>
           <IconButton color="inherit">
             {
@@ -71,12 +67,12 @@ function AppHeader(props) {
           </IconButton>
         </Toolbar>
       </StyledAppBar>
-      
+
       <HeaderDrawer open={drawerOpen}
-                    onClose={() => toggleDrawer(false)}
-                    moveOnPage={moveOnPage}
+        onClose={() => toggleDrawer(false)}
+        moveOnPage={moveOnPage}
       />
-      
+
     </>
   );
 }

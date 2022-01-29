@@ -7,17 +7,22 @@ const Content = styled.div`
   .img{
     position:absolute;
     width: 40rem;
-    height: 30em;
-    bottom:6rem;
+    height: 30rem;
+    bottom:-4rem;
     background-image:url("${process.env.PUBLIC_URL}/img/cloud.png");
     background-size: cover;
-    background-position: top left
+    background-position: top left;
+    @media ${(props)=>props.theme.mobile}{
+      bottom:-8rem;
+    };
+    @media ${(props)=>props.theme.tablet}{
+      bottom:-6rem;
+    }
   }
-
   .text{
     z-index:1;
     margin-top:10rem;
-    color:#ff4d5a;
+    color:#ff922b;
     font-size:3rem;
     .folio{
       font-size:3rem;

@@ -1,14 +1,10 @@
 import styled from "styled-components"
-
-
-
+import Fade from 'react-reveal/Fade';
 const Content = styled.div`
-  
   margin-left: 10vw;
   .name{
     font-size: 6rem;
     @media ${(props)=>props.theme.mobile}{
-      
     }
   }
   .etc{
@@ -29,7 +25,7 @@ const LeftContent = (props) => {
     <Content>
       <div className="name">UNHO</div>
       <div className="name">JO</div>
-      <StyledHr color="#ff4d5a" />
+      <StyledHr color="#ff922b" />
       <StyledHr color="#087f5b" marginLeft="5rem" />
       <div className="etc">Fullstack Developer; </div>
       <div className="etc">Web Service;</div>

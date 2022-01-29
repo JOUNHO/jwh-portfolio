@@ -8,9 +8,9 @@ const StyledDrawer = styled(Drawer)`
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color : #d3f9d8;
+    background-color : black;
     height:100vh;
-    color:black;
+    color:white;
     text-align:center;
   }
   .listItem {

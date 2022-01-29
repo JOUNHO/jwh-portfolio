@@ -12,7 +12,6 @@ import HeaderDrawer from './HeaderDrawer';
 const StyledAppBar = styled(AppBar)`
   position:absolute;
   background-color:transparent;
-  color:white;
   box-shadow:0 0;
   div {
     font-size: 1rem;
@@ -43,10 +42,9 @@ function AppHeader(props) {
     toggleDrawer(false);
     props.moveOnPage(index);
   }
-
   return(
     <>
-      <StyledAppBar>
+      <StyledAppBar color={props.destinationPage === 1 ? "secondary": "default"}>
         <Toolbar>
           <div className="name">
             UNHO JO

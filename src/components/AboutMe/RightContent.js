@@ -1,4 +1,8 @@
 import styled from "styled-components"
+import Fade from 'react-reveal/Fade';
+import useInterval from "../../hooks/useInterval";
+import { useState } from "react";
+import { getExperienceList, getLikeList } from "./data";
 
 const Content = styled.div`
   margin-right: 3vw;
@@ -9,6 +13,9 @@ const Content = styled.div`
       font-size:1.3rem;
     }
   }
+`
+const Like = styled.div`
+  color:${(props)=>props.color};
 `
 const StyledItem = styled.div`
   margin-top: 2rem;
@@ -33,12 +40,14 @@ export const ExperienceItem = (props) => {
   )
 };
 
-const RightContent = () => {
-  const experienceList = [
-    {title:"인천대학교",term:"2015.03 ~ 2021.02",content:"컴퓨터공학과를 전공하여 개발자가 되기위한 기초를 쌓았습니다."},
-    {title:"한국소프트웨어 협회", term:"2021.01 ~ 2021.07",content:"6개월동안 웹개발자로서의 교육을 받았습니다."},
-    {title:"더존비즈온", term:"2021.08 ~ ",content:"프론트엔드 개발자로서 경영관리 프로그램을 개발하고 있습니다."}
-  ]
+const RightContent = (props) => {
+  const experienceList = getExperienceList();
+  const likeList = getLikeList();
+  const [idx,setIdx] = useState(0);
+  const show = useInterval(3000, () => {
+    setIdx((idx+1)%2);
+  });
+
   return(
     <Content>
       <div className="greet">
@@ -46,7 +55,10 @@ const RightContent = () => {
           안녕하세요.
         </div>
         <div>
-          <span>배우는것을 좋아하는</span> 개발자 조운호입니다
+          <Fade bottom opposite when={show}>
+            <Like color={(idx%2===0) ? "#087f5b":"#ff922b"}>{likeList[idx]}</Like>
+          </Fade>
+          Fullstack 개발자 조운호입니다
         </div>
       </div>
       {

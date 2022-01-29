@@ -12,7 +12,8 @@ import { ConnectingAirportsOutlined } from '@mui/icons-material';
 
 function App() {
   const pages = ["HOME", "ABOUT_ME", "PROJECT", "CONTACT"];
-  let fullpageAPI,destinationPage;
+  let fullpageAPI;
+  const [destinationPage,setDestinationPage] = useState(1);
   /* Header Item 클릭 했을때*/
   const moveOnPage = (index) => {
     fullpageAPI.moveTo(pages[index],index);
@@ -23,7 +24,7 @@ function App() {
   }
   return (
     <>
-      <AppHeader moveOnPage={moveOnPage}/>
+      <AppHeader moveOnPage={moveOnPage} destinationPage={destinationPage}/>
       <ReactFullpage
         v2compatible={true}
         anchors={pages}
@@ -35,7 +36,10 @@ function App() {
         }}
         render={({ state, fullpageApi }) => {
           fullpageAPI=fullpageApi;
-          destinationPage=state.destination;
+          if(state.destination){
+            setDestinationPage(state.destination);
+          }
+          
           return (
             <div>
               <Home openPage={viewPage(1)}/>
